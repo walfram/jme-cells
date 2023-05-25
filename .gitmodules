@@ -1,0 +1,3 @@
+[submodule "jme3-addons"]
+	path = jme3-addons
+	url = https://github.com/walfram/jme3-addons.git
