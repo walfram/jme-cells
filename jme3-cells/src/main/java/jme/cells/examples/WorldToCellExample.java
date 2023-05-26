@@ -20,10 +20,11 @@ import com.simsilica.lemur.input.FunctionId;
 import com.simsilica.lemur.input.InputMapper;
 import com.simsilica.lemur.input.InputState;
 import jme.cells.core.Cell;
-import jme.cells.tmp.CollisionWith;
-import jme.cells.tmp.InfiniteCollidable;
+import jme3.common.collision.CollisionWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jme3.common.collision.InfiniteCollidable;
 
 import java.util.List;
 import java.util.Optional;
@@ -81,9 +82,9 @@ public class WorldToCellExample extends SimpleApplication {
                 return;
 
             Optional<CollisionResult> result = new CollisionWith(
+                    new InfiniteCollidable(),
                     getCamera(),
-                    inputManager.getCursorPosition(),
-                    new InfiniteCollidable()
+                    inputManager.getCursorPosition()
             ).collision();
 
             result.ifPresentOrElse(cr -> {

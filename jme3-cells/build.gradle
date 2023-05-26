@@ -23,6 +23,8 @@ dependencies {
     implementation 'com.github.stephengold:Heart:8.4.0'
 
     implementation 'com.simsilica:lemur:1.16.0'
+
+    implementation project(':jme3-addons')
 }
 
 java {
