@@ -88,9 +88,8 @@ public class WorldToCellExample extends SimpleApplication {
             ).collision();
 
             result.ifPresentOrElse(cr -> {
-                logger.debug("click @ {}", cr.getContactPoint());
                 Cell cell = new Cell(cr.getContactPoint(), cellExtent);
-                logger.debug("clicked cell = {}", cell);
+                logger.debug("click @ {}, cell = {}", cr.getContactPoint(), cell);
             }, () -> {
                 logger.debug("no collision...");
             });
@@ -98,25 +97,4 @@ public class WorldToCellExample extends SimpleApplication {
 
     }
 
-
-    protected void addClickHandle() {
-        MouseEventControl.addListenersToSpatial(rootNode, new DefaultMouseListener() {
-            @Override
-            protected void click(MouseButtonEvent event, Spatial target, Spatial capture) {
-                logger.debug("click");
-
-                if (event.getButtonIndex() != MouseInput.BUTTON_RIGHT)
-                    return;
-
-                logger.debug("right-click");
-
-                if (event.isPressed())
-                    return;
-
-                logger.debug("not pressed");
-
-                logger.debug("click on = {}", capture.getName());
-            }
-        });
-    }
 }
