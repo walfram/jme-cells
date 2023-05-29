@@ -2,7 +2,6 @@ package jme.cells.examples;
 
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
-import com.jme3.app.state.AppState;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.asset.AssetManager;
 import com.jme3.input.FlyByCamera;
@@ -18,10 +17,17 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.debug.Grid;
 import jme3utilities.debug.AxesVisualizer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-class CommonInitState extends BaseAppState {
+class InitCommonState extends BaseAppState {
+
+    private static final Logger logger = LoggerFactory.getLogger(InitCommonState.class);
+
     @Override
     protected void initialize(Application app) {
+        logger.debug("initializing");
+
         SimpleApplication sa = (SimpleApplication) app;
 
         FlyByCamera flyCam = sa.getFlyByCamera();
@@ -50,20 +56,19 @@ class CommonInitState extends BaseAppState {
         debugGrid.setMaterial(debugGridMat);
         debugGrid.center();
         rootNode.attachChild(debugGrid);
+
+        logger.debug("initialized");
     }
 
     @Override
     protected void cleanup(Application app) {
-
     }
 
     @Override
     protected void onEnable() {
-
     }
 
     @Override
     protected void onDisable() {
-
     }
 }

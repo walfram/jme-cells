@@ -2,19 +2,14 @@ package jme.cells.examples;
 
 import com.jme3.app.SimpleApplication;
 import com.jme3.collision.CollisionResult;
-import com.jme3.input.MouseInput;
-import com.jme3.input.event.MouseButtonEvent;
 import com.jme3.material.Material;
 import com.jme3.material.Materials;
 import com.jme3.math.ColorRGBA;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
-import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
 import com.jme3.system.AppSettings;
 import com.simsilica.lemur.GuiGlobals;
-import com.simsilica.lemur.event.DefaultMouseListener;
-import com.simsilica.lemur.event.MouseEventControl;
 import com.simsilica.lemur.input.Button;
 import com.simsilica.lemur.input.FunctionId;
 import com.simsilica.lemur.input.InputMapper;
@@ -49,7 +44,7 @@ public class WorldToCellExample extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        stateManager.attach(new CommonInitState());
+        stateManager.attach(new InitCommonState());
 
         GuiGlobals.initialize(this);
 

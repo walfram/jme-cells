@@ -1,5 +1,6 @@
 package jme.cells.core;
 
+import com.jme3.bounding.BoundingBox;
 import com.jme3.math.Vector3f;
 
 import java.util.ArrayList;
@@ -70,5 +71,22 @@ public class Cell {
 //        nbrs.remove(this);
 
         return nbrs;
+    }
+
+    public boolean contains(Vector3f location) {
+//        return new BoundingBox(
+//                new Vector3f(x, 0, z).multLocal(2f * extent).subtractLocal(2f * extent, 0, 2f * extent),
+//                new Vector3f(x, 0, z).multLocal(2f * extent).addLocal(2f * extent, 0, 2f * extent)
+//        ).contains(location);
+
+        Vector3f c = worldCenter();
+
+        float xmin = c.x - extent;
+        float xmax = c.x + extent;
+
+        float zmin = c.z - extent;
+        float zmax = c.z + extent;
+
+        return (location.x >= xmin && location.x <= xmax) && (location.z >= zmin && location.z <= zmax);
     }
 }

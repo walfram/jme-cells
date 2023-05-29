@@ -4,15 +4,11 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.material.Material;
 import com.jme3.material.Materials;
 import com.jme3.math.ColorRGBA;
-import com.jme3.math.Quaternion;
-import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
-import com.jme3.scene.debug.Grid;
 import com.jme3.scene.debug.WireBox;
 import com.jme3.system.AppSettings;
 import jme.cells.core.Cell;
-import jme3utilities.debug.AxesVisualizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,7 +32,7 @@ public class SimpleCellsExample extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        stateManager.attach(new CommonInitState());
+        stateManager.attach(new InitCommonState());
 
         // TODO should use domain width extent or smth like that
         final int domainWidth = 8;
