@@ -1,9 +1,8 @@
 package jme.cells.examples;
 
-import com.jme3.app.*;
+import com.jme3.app.Application;
+import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
-import com.jme3.app.state.ConstantVerifierState;
-import com.jme3.audio.AudioListenerState;
 import com.jme3.system.AppSettings;
 import com.simsilica.lemur.Container;
 import com.simsilica.lemur.Label;
@@ -39,44 +38,7 @@ public class CellTrackExample extends SimpleApplication {
         stateManager.attach(new InitCommonState());
         stateManager.attach(new InitLemurState());
 
-        stateManager.attach(new BaseAppState() {
-            @Override
-            protected void initialize(Application app) {
-                Container container = new Container();
-
-                container.addChild(new Label("camera"));
-                Label camera = container.addChild(new Label("camera"));
-
-                container.addChild(new Label("inside cell"));
-                Label inside = container.addChild(new Label("inside cell"));
-
-                container.addControl(new SimpleControl() {
-                    @Override
-                    protected void controlUpdate(float updateInterval) {
-                        camera.setText(new FormattedVector3f(cam.getLocation()).format());
-                        inside.setText(Boolean.toString(cell.contains(cam.getLocation())));
-                    }
-                });
-
-                guiNode.attachChild(container);
-                container.setLocalTranslation(10, cam.getHeight() - 10, 0);
-            }
-
-            @Override
-            protected void cleanup(Application app) {
-
-            }
-
-            @Override
-            protected void onEnable() {
-
-            }
-
-            @Override
-            protected void onDisable() {
-
-            }
-        });
+        stateManager.attach(new CellTrackState(cell));
 
         logger.debug("initialized");
     }
