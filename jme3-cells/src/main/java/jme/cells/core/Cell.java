@@ -89,4 +89,8 @@ public class Cell {
 
         return (location.x >= xmin && location.x <= xmax) && (location.z >= zmin && location.z <= zmax);
     }
+
+    public float extent() {
+        return extent;
+    }
 }
