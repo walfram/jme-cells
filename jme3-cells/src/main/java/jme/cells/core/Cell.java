@@ -93,4 +93,10 @@ public class Cell {
     public float extent() {
         return extent;
     }
+
+    public List<Cell> neighboursWithoutSelf() {
+        List<Cell> nbrs = neighbours();
+        nbrs.remove(this);
+        return nbrs;
+    }
 }

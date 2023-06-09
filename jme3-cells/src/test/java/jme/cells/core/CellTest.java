@@ -3,9 +3,55 @@ package jme.cells.core;
 import com.jme3.math.Vector3f;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CellTest {
+
+    @Test
+    public void test_contains2() {
+        Cell cell = new Cell(1, 0, 100f);
+
+        assertFalse(cell.contains(new Vector3f(0, 100, 0)));
+
+        assertTrue(cell.contains(new Vector3f(100, 0, 0)));
+        assertFalse(cell.contains(new Vector3f(-100, 0, 0)));
+
+        assertFalse(cell.contains(new Vector3f(0, 0, 100)));
+        assertFalse(cell.contains(new Vector3f(0, 0, -100)));
+    }
+
+    @Test
+    public void test_contains() {
+        Cell cell = new Cell(0, 0, 100f);
+
+        assertTrue(cell.contains(new Vector3f(0, 100, 0)));
+
+        assertTrue(cell.contains(new Vector3f(100, 0, 0)));
+        assertTrue(cell.contains(new Vector3f(-100, 0, 0)));
+
+        assertTrue(cell.contains(new Vector3f(0, 0, 100)));
+        assertTrue(cell.contains(new Vector3f(0, 0, -100)));
+    }
+
+    @Test
+    public void test_neighbours_without_self() {
+        Cell cell = new Cell(0, 0, 100f);
+
+        List<Cell> cells = cell.neighboursWithoutSelf();
+
+        assertEquals(8, cells.size());
+        assertFalse(cells.contains(cell));
+    }
+
+    @Test
+    public void test_neighbours() {
+        Cell cell = new Cell(0, 0, 100f);
+        List<Cell> neighbours = cell.neighbours();
+
+        assertEquals(9, neighbours.size());
+    }
 
     @Test
     public void test_cell_from_vector3f() {
