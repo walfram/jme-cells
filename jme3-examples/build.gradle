@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jmonkeyengine:jme3-core:3.6.0-stable'
+    implementation 'org.jmonkeyengine:jme3-desktop:3.6.0-stable'
+    implementation 'org.jmonkeyengine:jme3-lwjgl3:3.6.0-stable'
+    implementation 'org.jmonkeyengine:jme3-plugins:3.6.0-stable'
+
+    implementation 'ch.qos.logback:logback-classic:1.4.7'
+
+    implementation 'com.github.stephengold:Heart:8.4.0'
+
+    implementation 'com.simsilica:lemur:1.16.0'
+
+    implementation project(path: ':jme3-addons')
+    implementation project(path: ':jme3-cells')
+
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+test {
+    useJUnitPlatform()
+}

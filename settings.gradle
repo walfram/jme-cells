@@ -2,3 +2,5 @@ rootProject.name = 'cells'
 
 include 'jme3-addons'
 include 'jme3-cells'
+include 'jme3-examples'
+

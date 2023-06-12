@@ -1,4 +1,4 @@
-package jme.cells.examples;
+package jme3.cells.examples;
 
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
@@ -9,7 +9,9 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.Node;
 import com.jme3.scene.shape.Box;
+import com.simsilica.lemur.geom.MBox;
 import jme.cells.core.Cell;
+import jme3.common.material.MtlLighting;
 import jme3.common.material.MtlUnshaded;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,8 +33,9 @@ final class CellTrackCoreState extends BaseAppState {
     @Override
     protected void initialize(Application app) {
 //        mesh = new WireBox(CELL_EXTENT, 1, CELL_EXTENT);
-        mesh = new Box(CELL_EXTENT, 1, CELL_EXTENT);
-        material = new MtlUnshaded(app.getAssetManager(), ColorRGBA.Orange);
+//        mesh = new Box(CELL_EXTENT, 1, CELL_EXTENT);
+        mesh = new MBox(CELL_EXTENT, 1, CELL_EXTENT, 4, 1, 4);
+        material = new MtlLighting(app.getAssetManager(), ColorRGBA.Orange);
         material.getAdditionalRenderState().setWireframe(true);
 
         current = new Cell(app.getCamera().getLocation(), CELL_EXTENT);
