@@ -99,4 +99,16 @@ public class Cell {
         nbrs.remove(this);
         return nbrs;
     }
+
+    public List<Cell> neighboursInExtent(int ext) {
+        List<Cell> cells = new ArrayList<>( (2 * ext + 1) * (2 * ext + 1) );
+
+        for (int cx = x - ext; cx <= x + ext; cx++) {
+            for (int cz = z - ext; cz <= z + ext; cz++) {
+                cells.add(new Cell(cx, cz, extent));
+            }
+        }
+
+        return cells;
+    }
 }

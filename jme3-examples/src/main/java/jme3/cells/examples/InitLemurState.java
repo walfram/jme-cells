@@ -7,7 +7,7 @@ import com.simsilica.lemur.style.BaseStyles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-class InitLemurState extends BaseAppState {
+public final class InitLemurState extends BaseAppState {
 
     private static final Logger logger = LoggerFactory.getLogger(InitLemurState.class);
 

@@ -1,4 +1,4 @@
-package jme3.cells.examples;
+package jme3.cells.examples.tracking;
 
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
@@ -49,16 +49,13 @@ public class CellTrackGuiState extends BaseAppState {
 
     @Override
     protected void cleanup(Application app) {
-
     }
 
     @Override
     protected void onEnable() {
-
     }
 
     @Override
     protected void onDisable() {
-
     }
 }

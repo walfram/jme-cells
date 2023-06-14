@@ -1,4 +1,4 @@
-package jme3.cells.examples;
+package jme3.cells.examples.simple;
 
 import com.jme3.app.SimpleApplication;
 import com.jme3.collision.CollisionResult;
@@ -15,6 +15,7 @@ import com.simsilica.lemur.input.FunctionId;
 import com.simsilica.lemur.input.InputMapper;
 import com.simsilica.lemur.input.InputState;
 import jme.cells.core.Cell;
+import jme3.cells.examples.InitCommonState;
 import jme3.common.collision.CollisionWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

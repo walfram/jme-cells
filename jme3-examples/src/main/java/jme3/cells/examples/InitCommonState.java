@@ -16,11 +16,12 @@ import com.jme3.renderer.Camera;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.debug.Grid;
+import jme3utilities.MyCamera;
 import jme3utilities.debug.AxesVisualizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-class InitCommonState extends BaseAppState {
+public final class InitCommonState extends BaseAppState {
 
     private static final Logger logger = LoggerFactory.getLogger(InitCommonState.class);
 
@@ -38,6 +39,8 @@ class InitCommonState extends BaseAppState {
         flyCam.setDragToRotate(true);
         flyCam.setMoveSpeed(100);
         flyCam.setZoomSpeed(0);
+
+        MyCamera.setNearFar(cam, cam.getFrustumNear(), 32768f);
 
         rootNode.addControl(new AxesVisualizer(assetManager, 100f, 2f));
         rootNode.getControl(AxesVisualizer.class).setEnabled(true);

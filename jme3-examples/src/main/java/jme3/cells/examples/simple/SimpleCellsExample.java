@@ -1,4 +1,4 @@
-package jme3.cells.examples;
+package jme3.cells.examples.simple;
 
 import com.jme3.app.SimpleApplication;
 import com.jme3.material.Material;
@@ -9,6 +9,7 @@ import com.jme3.scene.Mesh;
 import com.jme3.scene.debug.WireBox;
 import com.jme3.system.AppSettings;
 import jme.cells.core.Cell;
+import jme3.cells.examples.InitCommonState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
