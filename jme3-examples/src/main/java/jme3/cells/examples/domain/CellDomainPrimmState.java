@@ -4,6 +4,9 @@ import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.scene.Node;
+import jme.cells.core.Cell;
+
+import java.util.List;
 
 public class CellDomainPrimmState extends BaseAppState {
 
@@ -15,6 +18,7 @@ public class CellDomainPrimmState extends BaseAppState {
 
     @Override
     protected void initialize(Application app) {
+        List<Cell> domain = new Cell(0, 0, 10f).neighboursInExtent(4);
     }
 
     @Override

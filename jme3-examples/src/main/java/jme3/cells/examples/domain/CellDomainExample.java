@@ -28,8 +28,11 @@ public class CellDomainExample extends SimpleApplication {
         stateManager.attach(new CellDomainSimpleState());
         stateManager.attach(new CellDomainPrimmState());
 
-        stateManager.attach(new CellDomainUiState(
-                List.of(CellDomainSimpleState.class, CellDomainPrimmState.class)
-        ));
+        stateManager.attach(
+                new CellDomainUiState(
+                    List.of(CellDomainSimpleState.class, CellDomainPrimmState.class),
+                    CellDomainPrimmState.class
+                )
+        );
     }
 }

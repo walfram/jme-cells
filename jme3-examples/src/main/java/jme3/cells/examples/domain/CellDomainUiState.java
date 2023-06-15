@@ -13,9 +13,11 @@ import java.util.List;
 public class CellDomainUiState extends BaseAppState {
 
     private final List<Class<? extends BaseAppState>> states;
+    private final Class<? extends BaseAppState> defaultEnabledState;
 
-    public CellDomainUiState(List<Class<? extends BaseAppState>> states) {
+    public CellDomainUiState(List<Class<? extends BaseAppState>> states, Class<? extends BaseAppState> defaultEnabledState) {
         this.states = states;
+        this.defaultEnabledState = defaultEnabledState;
     }
 
     @Override
@@ -31,6 +33,8 @@ public class CellDomainUiState extends BaseAppState {
 
         ((SimpleApplication) app).getGuiNode().attachChild(container);
         container.setLocalTranslation(10, app.getCamera().getHeight() - 10, 0);
+
+        enableState(defaultEnabledState);
     }
 
     private void enableState(Class<? extends BaseAppState> stateClazz) {
