@@ -5,6 +5,8 @@ import com.jme3.system.AppSettings;
 import jme3.cells.examples.InitCommonState;
 import jme3.cells.examples.InitLemurState;
 
+import java.util.List;
+
 public class CellDomainExample extends SimpleApplication {
 
     public static void main(String[] args) {
@@ -23,6 +25,11 @@ public class CellDomainExample extends SimpleApplication {
         stateManager.attach(new InitCommonState());
         stateManager.attach(new InitLemurState());
 
-        stateManager.attach(new CellDomainState());
+        stateManager.attach(new CellDomainSimpleState());
+        stateManager.attach(new CellDomainPrimmState());
+
+        stateManager.attach(new CellDomainUiState(
+                List.of(CellDomainSimpleState.class, CellDomainPrimmState.class)
+        ));
     }
 }

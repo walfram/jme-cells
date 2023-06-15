@@ -2,7 +2,6 @@ package jme3.cells.examples.domain;
 
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
-import com.jme3.app.state.AppState;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
@@ -16,9 +15,13 @@ import jme3.common.material.MtlLighting;
 
 import java.util.List;
 
-public class CellDomainState extends BaseAppState {
+public class CellDomainSimpleState extends BaseAppState {
 
     private final Node scene = new Node("cell-domain-scene");
+
+    public CellDomainSimpleState() {
+        setEnabled(false);
+    }
 
     @Override
     protected void initialize(Application app) {
@@ -40,22 +43,19 @@ public class CellDomainState extends BaseAppState {
             geometry.setLocalTranslation(cell.worldCenter());
             scene.attachChild(geometry);
         }
-
-        ((SimpleApplication) app).getRootNode().attachChild(scene);
     }
 
     @Override
     protected void cleanup(Application app) {
-
     }
 
     @Override
     protected void onEnable() {
-
+        ((SimpleApplication) getApplication()).getRootNode().attachChild(scene);
     }
 
     @Override
     protected void onDisable() {
-
+        ((SimpleApplication) getApplication()).getRootNode().detachChild(scene);
     }
 }
