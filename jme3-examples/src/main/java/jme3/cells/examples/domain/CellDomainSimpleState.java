@@ -19,10 +19,6 @@ public class CellDomainSimpleState extends BaseAppState {
 
     private final Node scene = new Node("cell-domain-scene");
 
-    public CellDomainSimpleState() {
-        setEnabled(false);
-    }
-
     @Override
     protected void initialize(Application app) {
         Cell origin = new Cell(0, 0, 100f);

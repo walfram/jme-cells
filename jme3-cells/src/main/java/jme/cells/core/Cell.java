@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Cell {
 
-    private final int x;
-    private final int z;
+    public final int x;
+    public final int z;
     private final float extent;
 
     public Cell(int x, int z, float extent) {
