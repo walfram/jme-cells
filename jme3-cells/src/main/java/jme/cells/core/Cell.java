@@ -111,4 +111,13 @@ public class Cell {
 
         return cells;
     }
+
+    public List<Cell> orthogonalNeighbours(int ext) {
+        return List.of(
+                new Cell(x + ext, z, extent),
+                new Cell(x - ext, z, extent),
+                new Cell(x, z + ext, extent),
+                new Cell(x, z - ext, extent)
+        );
+    }
 }
