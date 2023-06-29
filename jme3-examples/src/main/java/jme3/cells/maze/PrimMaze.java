@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
+// https://kairumagames.com/blog/cavetutorial
+// via
+// https://habr.com/ru/post/537630/
 public class PrimMaze {
 
     private static final Logger logger = LoggerFactory.getLogger(PrimMaze.class);
