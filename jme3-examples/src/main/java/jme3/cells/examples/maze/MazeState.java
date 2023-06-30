@@ -2,9 +2,7 @@ package jme3.cells.examples.maze;
 
 import com.jme3.app.Application;
 import com.jme3.app.state.BaseAppState;
-import jme3.cells.maze.CellType;
-import jme3.cells.maze.MazeCell;
-import jme3.cells.maze.PrimMaze;
+import jme3.cells.maze.*;
 import jme3utilities.math.noise.Generator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +24,11 @@ public class MazeState extends BaseAppState {
 
         PrimMaze maze = new PrimMaze(width, height, random);
 
-        cells.putAll( maze.cells() );
+        MazeMutation caveGrow = new CaveGrow(
+            new DeadEndRemove(maze)
+        );
+
+        cells.putAll( caveGrow.cells() );
 
         logger.debug("initialized");
     }

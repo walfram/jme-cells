@@ -5,6 +5,7 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
+import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
@@ -31,7 +32,7 @@ public class SceneState extends BaseAppState {
 
     private final Map<CellType, Material> materials = new HashMap<>();
 
-    private final float extent = 10f;
+    private final float extent = 4f;
 
     private final Function<MazeCell, Vector3f> mazeCellTranslation = (c) -> new Vector3f(c.x, 0, c.z).multLocal(2 * extent);
 
@@ -57,6 +58,11 @@ public class SceneState extends BaseAppState {
             scene.attachChild(geometry);
 
         }
+
+        scene.center();
+
+        app.getCamera().setLocation(new Vector3f(18.340261f, 338.0807f, 123.68729f));
+        app.getCamera().setRotation(new Quaternion(-0.051488515f, 0.8044358f, -0.58759123f, -0.07048923f));
     }
 
     @Override

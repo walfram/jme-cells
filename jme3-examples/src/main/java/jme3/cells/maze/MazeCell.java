@@ -1,5 +1,7 @@
 package jme3.cells.maze;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MazeCell {
@@ -53,4 +55,18 @@ public class MazeCell {
         };
     }
 
+    public List<MazeCell> neighbours(int range) {
+        int capacity = (2 * range + 1) * (2 * range + 1);
+        List<MazeCell> neighbours = new ArrayList<>(capacity);
+
+        for (int xx = x - range; xx <= x + range; xx++) {
+            for (int zz = z - range; zz <= z + range; zz++) {
+                neighbours.add(new MazeCell(xx, zz));
+            }
+        }
+
+        neighbours.remove(this);
+
+        return neighbours;
+    }
 }
