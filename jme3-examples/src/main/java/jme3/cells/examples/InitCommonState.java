@@ -7,15 +7,11 @@ import com.jme3.asset.AssetManager;
 import com.jme3.input.FlyByCamera;
 import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
-import com.jme3.material.Material;
-import com.jme3.material.Materials;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
-import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
-import com.jme3.scene.debug.Grid;
 import jme3utilities.MyCamera;
 import jme3utilities.debug.AxesVisualizer;
 import org.slf4j.Logger;
@@ -51,14 +47,14 @@ public final class InitCommonState extends BaseAppState {
         rootNode.addLight(new AmbientLight(ColorRGBA.White));
         rootNode.addLight(new DirectionalLight(cam.getDirection(), ColorRGBA.White));
 
-        Geometry debugGrid = new Geometry("debug-grid", new Grid(8, 8, 25));
-
-        Material debugGridMat = new Material(assetManager, Materials.UNSHADED);
-        debugGridMat.setColor("Color", ColorRGBA.Blue);
-
-        debugGrid.setMaterial(debugGridMat);
-        debugGrid.center();
-        rootNode.attachChild(debugGrid);
+//        Geometry debugGrid = new Geometry("debug-grid", new Grid(8, 8, 25));
+//
+//        Material debugGridMat = new Material(assetManager, Materials.UNSHADED);
+//        debugGridMat.setColor("Color", ColorRGBA.Blue);
+//
+//        debugGrid.setMaterial(debugGridMat);
+//        debugGrid.center();
+//        rootNode.attachChild(debugGrid);
 
         logger.debug("initialized");
     }
