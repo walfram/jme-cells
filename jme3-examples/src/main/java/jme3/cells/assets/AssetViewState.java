@@ -16,10 +16,7 @@ import org.reflections.scanners.Scanners;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 
 public class AssetViewState extends BaseAppState {
@@ -32,20 +29,20 @@ public class AssetViewState extends BaseAppState {
 
     @Override
     protected void initialize(Application app) {
-        Reflections reflections = new Reflections("nature-kit.obj", Scanners.Resources);
+        Reflections reflections = new Reflections("mini-dungeon.obj", Scanners.Resources);
         Set<String> resources = reflections.getResources(".*\\.obj");
 
         logger.debug("found obj resources = {}", resources.size());
 
         List<String> cliffResources = resources
                 .stream()
-                .filter(s -> s.contains("cliff_"))
+//                .filter(s -> s.contains("cliff_"))
                 .sorted()
                 .toList();
 
         logger.debug("cliff resources = {}", cliffResources.size());
 
-        int extent = (int) Math.ceil( Math.sqrt( cliffResources.size() ) * 0.5f );
+        int extent = (int) Math.ceil( Math.sqrt( cliffResources.size() ) * 0.5f) - 1;
         logger.debug("extent = {}", extent);
 
         List<MazeCell> cells = new ArrayList<>( (extent * 2 + 1) * (extent * 2 + 1) );

@@ -1,7 +1,6 @@
 package jme3.cells.maze;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MazeCell {
@@ -48,10 +47,10 @@ public class MazeCell {
 
     public MazeCell neighbourOrtho(Direction direction, int extent) {
         return switch (direction) {
-            case NORTH -> new MazeCell(x, z - extent);
-            case SOUTH -> new MazeCell(x, z + extent);
-            case EAST -> new MazeCell(x - extent, z);
-            case WEST -> new MazeCell(x + extent, z);
+            case Z_NEG -> new MazeCell(x, z - extent);
+            case Z_POS -> new MazeCell(x, z + extent);
+            case X_NEG -> new MazeCell(x - extent, z);
+            case X_POS -> new MazeCell(x + extent, z);
         };
     }
 
