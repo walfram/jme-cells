@@ -26,7 +26,11 @@ public class PrimMazeExample extends SimpleApplication {
 
         stateManager.attach(new MazeState());
 
-        stateManager.attach(new MazeFloorState(rootNode));
-        stateManager.attach(new SimpleWallsState(rootNode));
+//        stateManager.attach(new SimpleFloorState(rootNode));
+//        stateManager.attach(new SimpleWallsState(rootNode));
+
+        stateManager.attach(new MiniDungeonFloorState(rootNode));
+
+        stateManager.attach(new MiniDungeonWallsState(rootNode));
     }
 }

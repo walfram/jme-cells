@@ -15,7 +15,6 @@ import com.simsilica.lemur.geom.MBox;
 import jme3.cells.maze.CellType;
 import jme3.cells.maze.Direction;
 import jme3.cells.maze.MazeCell;
-import jme3.cells.maze.MazeCellTranslation;
 import jme3.common.material.MtlLighting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,15 +22,12 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 
 public class SimpleWallsState extends BaseAppState {
 
     private static final Logger logger = LoggerFactory.getLogger(SimpleWallsState.class);
 
     private final Node scene = new Node("maze-walls-node");
-
-    private final Function<MazeCell, Vector3f> mazeCellTranslation = new MazeCellTranslation(Const.CELL_EXTENT);
 
     public SimpleWallsState(Node rootNode) {
         rootNode.attachChild(scene);
@@ -64,7 +60,7 @@ public class SimpleWallsState extends BaseAppState {
 
         for (MazeCell wall: walls) {
             List<MazeCell> empties = wall
-                    .neighbours(1)
+                    .neighboursOrtho(1)
                     .stream()
                     .filter(c -> mazeCells.get(c) == CellType.EMPTY)
                     .toList();
@@ -77,7 +73,7 @@ public class SimpleWallsState extends BaseAppState {
                     continue;
 
                 Spatial s = wallSpatials.get(d).clone();
-                Vector3f translation = mazeCellTranslation.apply(wall);
+                Vector3f translation = Const.translationFunc.apply(wall);
                 s.setLocalTranslation(translation);
                 scene.attachChild(s);
             }

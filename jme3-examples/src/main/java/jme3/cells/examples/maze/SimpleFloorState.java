@@ -4,26 +4,21 @@ import com.jme3.app.Application;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
-import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.Node;
 import com.simsilica.lemur.geom.MBox;
 import jme3.cells.maze.CellType;
 import jme3.cells.maze.MazeCell;
-import jme3.cells.maze.MazeCellTranslation;
 import jme3.common.material.MtlLighting;
 
 import java.util.Map;
-import java.util.function.Function;
 
-public class MazeFloorState extends BaseAppState {
+public class SimpleFloorState extends BaseAppState {
 
     private final Node scene = new Node("maze-floor-scene");
 
-    private final Function<MazeCell, Vector3f> mazeCellTranslation = new MazeCellTranslation(Const.CELL_EXTENT);
-
-    public MazeFloorState(Node rootNode) {
+    public SimpleFloorState(Node rootNode) {
         rootNode.attachChild(scene);
     }
 
@@ -41,7 +36,7 @@ public class MazeFloorState extends BaseAppState {
             Geometry geometry = new Geometry(e.getKey().toString(), e.getValue() == CellType.EMPTY ? empty : wall);
             geometry.setMaterial(e.getValue() == CellType.EMPTY ? emptyMtl : wallMtl);
 
-            geometry.setLocalTranslation(mazeCellTranslation.apply(e.getKey()));
+            geometry.setLocalTranslation(Const.translationFunc.apply(e.getKey()));
 
             scene.attachChild(geometry);
         }
