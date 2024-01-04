@@ -39,9 +39,7 @@ public class MiniDungeonWallsState extends BaseAppState {
                 .map(e -> e.getKey())
                 .toList();
 
-        Mesh mesh = new MBox(Const.CELL_EXTENT, Const.CELL_EXTENT, Const.CELL_EXTENT, 1, 1, 1);
-        Material material = new MtlLighting(app.getAssetManager(), ColorRGBA.Orange);
-        material.getAdditionalRenderState().setWireframe(true);
+        float scale = Const.CELL_EXTENT / 0.5f;
 
         for (MazeCell wall : walls) {
             List<MazeCell> emptyNbrs = wall
@@ -53,26 +51,17 @@ public class MiniDungeonWallsState extends BaseAppState {
             if (emptyNbrs.isEmpty())
                 continue;
 
-//            Geometry geometry = new Geometry(wall.toString(), mesh);
-//            geometry.setMaterial(material);
-//            geometry.setLocalTranslation(Const.translationFunc.apply(wall).addLocal(0, Const.CELL_EXTENT, 0));
-//            scene.attachChild(geometry);
-
-            float scale = Const.CELL_EXTENT / 0.5f;
-
+            Spatial spatial;
             if (emptyNbrs.size() == 1) {
-                // wall-half.obj
-                Spatial spatial = app.getAssetManager().loadModel("mini-dungeon/obj/wall-half.obj");
-                spatial.scale(scale);
+                spatial = app.getAssetManager().loadModel("mini-dungeon/obj/wall-half.obj");
                 spatial.setLocalTranslation(Const.translationFunc.apply(wall));
                 spatial.lookAt( Const.translationFunc.apply(emptyNbrs.get(0)), Vector3f.UNIT_Y );
-                scene.attachChild(spatial);
             } else {
-                Spatial spatial = app.getAssetManager().loadModel("mini-dungeon/obj/wall.obj");
-                spatial.scale(scale);
+                spatial = app.getAssetManager().loadModel("mini-dungeon/obj/wall.obj");
                 spatial.setLocalTranslation(Const.translationFunc.apply(wall));
-                scene.attachChild(spatial);
             }
+            spatial.scale(scale);
+            scene.attachChild(spatial);
         }
 
         app.getCamera().setLocation(new Vector3f(-33.84205f, 192.39107f, 124.108604f));
@@ -81,16 +70,13 @@ public class MiniDungeonWallsState extends BaseAppState {
 
     @Override
     protected void cleanup(Application app) {
-
     }
 
     @Override
     protected void onEnable() {
-
     }
 
     @Override
     protected void onDisable() {
-
     }
 }
